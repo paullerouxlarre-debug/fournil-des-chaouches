@@ -152,17 +152,26 @@ a{color:inherit}
 .pat h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;text-transform:uppercase;font-size:clamp(2.2rem,4.4vw,4.2rem);line-height:.95;margin:10px 0 14px;color:#f6efe2}
 .pat p{margin:0;max-width:36ch;color:rgba(246,239,226,.75)}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (max-width:760px){.postes .portrait{aspect-ratio:16/10}.postes{gap:28px}.patisseries .colle{grid-template-columns:1fr;grid-template-rows:58% 42%}.patisseries .texte{padding-left:var(--g-l);height:100%;padding-top:8px}}
+@media (max-width:760px){.postes .portrait{aspect-ratio:1/1}.postes{gap:28px}.patisseries .colle{grid-template-columns:1fr;grid-template-rows:58% 42%}.patisseries .texte{padding-left:var(--g-l);height:100%;padding-top:8px}}
 @media (prefers-reduced-motion:reduce){.pat{transition:none}}
 
 /* ---------- équipe ---------- */
 .equipe{background:var(--papier);padding-block:clamp(70px,10vw,130px)}
 .postes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,2.4vw,28px);margin-top:36px}
 .poste{display:grid;gap:12px;min-width:0}
-.portrait{aspect-ratio:4/5;max-width:100%;border-radius:3px;background:
-  repeating-linear-gradient(135deg,transparent 0 10px,rgba(36,23,14,.05) 10px 11px),var(--mie);
-  border:1px dashed var(--filet);display:grid;place-items:center;text-align:center;padding:16px}
-.portrait span{font-family:var(--f-mono);font-size:.72rem;color:var(--encre-2);max-width:20ch}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:3px;overflow:hidden;background:var(--mie)}
+.portrait svg{display:block;width:100%;height:100%}
+.poste .role{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--croute-fonce)}
+.yeux{transform-box:fill-box;transform-origin:center;animation:cligne 5.2s infinite}
+.poste:nth-child(2) .yeux{animation-delay:1.7s;animation-duration:6.1s}
+.poste:nth-child(3) .yeux{animation-delay:3.1s;animation-duration:4.7s}
+@keyframes cligne{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.12)}}
+.vapeur path{stroke-dasharray:42;animation:vapeur 3.2s linear infinite}
+.vapeur path:nth-child(2){animation-delay:1.4s}
+@keyframes vapeur{0%{stroke-dashoffset:84;opacity:0}35%{opacity:.85}100%{stroke-dashoffset:0;opacity:0}}
+.poche{transform-box:fill-box;transform-origin:70% 90%;animation:poche 3.4s ease-in-out infinite}
+@keyframes poche{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(4deg) translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.yeux,.vapeur path,.poche{animation:none}}
 .poste h3{font-weight:700;font-size:1.35rem}
 .poste p{margin:0;color:var(--encre-2);font-size:.95rem}
 .equipe .note{margin:28px 0 0;font-size:.9rem;color:var(--encre-2);max-width:62ch}
@@ -331,11 +340,103 @@ table.horaires td+td{text-align:right;font-family:var(--f-mono);font-size:.9rem}
     <p class="etiquette">L'équipe</p>
     <h2 id="t-eq">Ceux qui se lèvent avant toi</h2>
     <div class="postes">
-      <div class="poste"><div class="portrait"><span>Photo de l'équipe du fournil à venir</span></div><h3>Au fournil</h3><p>Les boulangers. Ils arrivent quand la rue est vide et façonnent chaque pain de la journée.</p></div>
-      <div class="poste"><div class="portrait"><span>Photo du laboratoire à venir</span></div><h3>Au laboratoire</h3><p>Les pâtissiers. Macarons, entremets, pièces montées : tout ce qui est dans la vitrine sort de leurs mains.</p></div>
-      <div class="poste"><div class="portrait"><span>Photo du comptoir à venir</span></div><h3>Au comptoir</h3><p>Celles et ceux qui te servent de 7 h à 20 h, prennent tes commandes et connaissent ta baguette préférée.</p></div>
+      <div class="poste"><div class="portrait">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Illustration de Bastien, chef boulanger, des baguettes sous le bras">
+          <defs><clipPath id="arc-b"><path d="M34 500V214a166 166 0 0 1 332 0v286z"/></clipPath></defs>
+          <path d="M34 500V214a166 166 0 0 1 332 0v286z" fill="#1d2a47"/>
+          <g clip-path="url(#arc-b)">
+            <g fill="#f3ead9" opacity=".18"><circle cx="92" cy="150" r="3"/><circle cx="300" cy="120" r="2"/><circle cx="330" cy="260" r="2.5"/><circle cx="70" cy="300" r="2"/><circle cx="255" cy="90" r="1.6"/></g>
+            <path d="M62 500c6-74 44-116 102-128l36 20 36-20c60 12 96 56 102 128z" fill="#f2ede3"/>
+            <path d="M124 500l16-110c20 11 41 16 60 16s42-6 62-17l16 111z" fill="#24365e"/>
+            <path d="M140 390l-10-44M262 389l12-44" stroke="#24365e" stroke-width="9" stroke-linecap="round"/>
+            <ellipse cx="236" cy="452" rx="20" ry="26" fill="#fff" opacity=".22" transform="rotate(-18 236 452)"/>
+            <ellipse cx="160" cy="470" rx="26" ry="9" fill="#fff" opacity=".14"/>
+            <path d="M178 328h44v42c-10 11-34 11-44 0z" fill="#b97f57"/>
+            <ellipse cx="135" cy="278" rx="11" ry="16" fill="#c98d64"/><ellipse cx="267" cy="274" rx="10" ry="15" fill="#c98d64"/>
+            <path d="M200 192c40 0 66 32 66 80 0 50-28 84-66 84s-66-34-66-82c0-50 26-82 66-82z" fill="#d39a70"/>
+            <path d="M138 286c6 52 34 74 62 74s58-24 62-76c-10 24-32 34-62 34s-52-10-62-32z" fill="#5a3a26"/>
+            <path d="M182 314c9 8 28 8 37-1" stroke="#2e1b10" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M201 266c-4 15-7 24 3 26" stroke="#a8704c" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <g class="yeux"><ellipse cx="177" cy="262" rx="5.5" ry="7" fill="#24160d"/><ellipse cx="227" cy="259" rx="5.5" ry="7" fill="#24160d"/></g>
+            <path d="M164 246c8-6 20-7 27-3M214 242c9-5 20-4 27 2" stroke="#3b2516" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="240" cy="292" rx="11" ry="5" fill="#fff" opacity=".45" transform="rotate(-10 240 292)"/>
+            <path d="M132 250c2-50 32-80 70-80s68 30 70 76c-30-12-104-14-140 4z" fill="#24365e"/>
+            <path d="M130 251c42-19 104-18 146-3l20 10c-52-12-124-13-166 0z" fill="#16213b"/>
+            <circle cx="214" cy="202" r="7" fill="#d6b46e"/>
+            <g transform="rotate(-26 120 430)">
+              <rect x="34" y="404" width="196" height="25" rx="12.5" fill="#c27a36"/><rect x="40" y="432" width="186" height="24" rx="12" fill="#b06a2a"/><rect x="46" y="378" width="180" height="24" rx="12" fill="#cf8a45"/>
+              <g fill="#f0c98a" opacity=".85"><ellipse cx="80" cy="414" rx="15" ry="3.5" transform="rotate(-12 80 414)"/><ellipse cx="122" cy="413" rx="15" ry="3.5" transform="rotate(-12 122 413)"/><ellipse cx="164" cy="412" rx="15" ry="3.5" transform="rotate(-12 164 412)"/><ellipse cx="96" cy="388" rx="14" ry="3" transform="rotate(-12 96 388)"/><ellipse cx="140" cy="387" rx="14" ry="3" transform="rotate(-12 140 387)"/><ellipse cx="100" cy="442" rx="14" ry="3" transform="rotate(-12 100 442)"/><ellipse cx="146" cy="441" rx="14" ry="3" transform="rotate(-12 146 441)"/></g>
+            </g>
+            <path d="M96 392c26 2 52 18 66 44 6 12-6 24-18 18-20-10-40-24-56-30z" fill="#d39a70"/>
+            <g class="vapeur" stroke="#f3ead9" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"><path d="M70 372c-10-14 10-22 0-38"/><path d="M98 360c-10-14 10-22 0-38"/></g>
+          </g>
+        </svg>
+      </div><span class="role">Chef boulanger · au fournil</span><h3>Bastien</h3><p>Il arrive quand la rue est encore vide. Le pétrin, la pointe, le façonnage, la sole : chaque baguette de la journée passe par ses mains.</p></div>
+
+      <div class="poste"><div class="portrait">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Illustration de Manon, pâtissière, une poche à douille à la main">
+          <defs><clipPath id="arc-m"><path d="M34 500V214a166 166 0 0 1 332 0v286z"/></clipPath></defs>
+          <path d="M34 500V214a166 166 0 0 1 332 0v286z" fill="#7a3f1b"/>
+          <g clip-path="url(#arc-m)">
+            <g fill="#f3ead9" opacity=".16"><circle cx="300" cy="150" r="3"/><circle cx="80" cy="200" r="2"/><circle cx="330" cy="300" r="2"/></g>
+            <path d="M60 500c8-76 46-118 104-128l36 22 36-22c58 10 98 52 104 128z" fill="#f5efe2"/>
+            <path d="M200 394l-30-22M200 394l30-22M200 394v106" stroke="#e2d6bf" stroke-width="4" fill="none"/>
+            <g fill="#d6b46e"><circle cx="216" cy="420" r="5"/><circle cx="216" cy="452" r="5"/><circle cx="216" cy="484" r="5"/><circle cx="246" cy="418" r="5"/><circle cx="246" cy="450" r="5"/><circle cx="246" cy="482" r="5"/></g>
+            <path d="M178 330h44v40c-10 12-34 12-44 0z" fill="#7d4e33"/>
+            <g fill="#1d140f"><circle cx="200" cy="168" r="34"/><circle cx="174" cy="178" r="22"/><circle cx="228" cy="176" r="24"/><circle cx="150" cy="232" r="26"/><circle cx="252" cy="226" r="26"/><circle cx="142" cy="268" r="20"/><circle cx="260" cy="262" r="19"/></g>
+            <ellipse cx="139" cy="282" rx="10" ry="15" fill="#8d5a3c"/><ellipse cx="263" cy="280" rx="10" ry="15" fill="#8d5a3c"/>
+            <path d="M200 196c38 0 62 32 62 80 0 48-26 82-62 82s-62-34-62-80c0-50 24-82 62-82z" fill="#9a6444"/>
+            <path d="M144 236c18-30 44-42 70-38 22 4 38 18 48 40-24-14-60-22-118-2z" fill="#1d140f"/>
+            <circle cx="141" cy="300" r="4" fill="#d6b46e"/>
+            <g class="yeux"><ellipse cx="180" cy="270" rx="5" ry="6.5" fill="#1a0f09"/><ellipse cx="223" cy="268" rx="5" ry="6.5" fill="#1a0f09"/></g>
+            <path d="M170 254c6-4 15-5 21-2M213 251c7-4 16-3 21 1" stroke="#1d140f" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M203 275c-3 12-6 18 2 21" stroke="#6b3f26" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M184 314c10 10 28 10 36 0" stroke="#5a1e1e" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="166" cy="298" rx="11" ry="6" fill="#c2604a" opacity=".35"/><ellipse cx="236" cy="296" rx="11" ry="6" fill="#c2604a" opacity=".35"/>
+            <path d="M298 500c4-40 14-78 30-116" stroke="#f5efe2" stroke-width="44" fill="none" stroke-linecap="round"/>
+            <g transform="translate(24 56)"><g class="poche">
+              <path d="M262 268l64-30 18 46c-26 24-56 30-82-16z" fill="#ece4d4" stroke="#cbbfa8" stroke-width="2"/>
+              <path d="M262 268l-26-14 8-8 26 12z" fill="#b9b2a4"/>
+              <path d="M226 246c6-10 20-12 24-2-10-2-14 6-24 2z" fill="#f6e6c8"/>
+              <path d="M296 302c12 10 30 6 38-6 2 22-10 46-34 52-16 4-22-18-4-46z" fill="#9a6444"/>
+            </g></g>
+            <g transform="translate(70 418)"><ellipse cx="0" cy="0" rx="26" ry="9" fill="#e7a7b6"/><ellipse cx="0" cy="-8" rx="26" ry="10" fill="#d98d9e"/><rect x="-24" y="-6" width="48" height="5" fill="#f4e3e6"/></g>
+            <g transform="translate(84 446) rotate(-8)"><ellipse cx="0" cy="0" rx="26" ry="9" fill="#c4d39e"/><ellipse cx="0" cy="-8" rx="26" ry="10" fill="#b6c98e"/><rect x="-24" y="-6" width="48" height="5" fill="#f1efdc"/></g>
+          </g>
+        </svg>
+      </div><span class="role">Pâtissière · au laboratoire</span><h3>Manon</h3><p>Macarons, gâteau basque, pièces montées : tout ce qui brille dans la vitrine sort de son laboratoire, juste derrière le comptoir.</p></div>
+
+      <div class="poste"><div class="portrait">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Illustration de Sophie, au comptoir, un sac de baguettes dans les bras">
+          <defs><clipPath id="arc-s"><path d="M34 500V214a166 166 0 0 1 332 0v286z"/></clipPath>
+            <pattern id="mariniere" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#f6f2ea"/><rect y="12" width="20" height="7" fill="#24365e"/></pattern></defs>
+          <path d="M34 500V214a166 166 0 0 1 332 0v286z" fill="#3e5873"/>
+          <g clip-path="url(#arc-s)">
+            <g fill="#f3ead9" opacity=".16"><circle cx="90" cy="140" r="2.5"/><circle cx="310" cy="190" r="3"/><circle cx="64" cy="320" r="2"/></g>
+            <path d="M62 500c8-74 46-114 102-126l36 16 36-16c58 12 96 54 102 126z" fill="url(#mariniere)"/>
+            <path d="M182 330h40v40c-8 10-32 10-40 0z" fill="#e2b18e"/>
+            <path d="M124 300c-6-70 28-112 78-112s82 40 76 112c-6 26-16 40-26 46l-10-90-82 0-8 92c-14-10-24-26-28-48z" fill="#9c4a24"/>
+            <path d="M200 200c36 0 60 30 60 76 0 48-26 80-60 80s-60-32-60-78c0-48 24-78 60-78z" fill="#f0c7a6"/>
+            <path d="M140 262c4-46 28-68 62-68 30 0 54 18 60 58-20-22-48-30-74-28-20 2-36 14-48 38z" fill="#9c4a24"/>
+            <circle cx="141" cy="300" r="7" fill="none" stroke="#d6b46e" stroke-width="3"/>
+            <g class="yeux"><ellipse cx="180" cy="274" rx="5" ry="6.5" fill="#2a1a12"/><ellipse cx="222" cy="273" rx="5" ry="6.5" fill="#2a1a12"/></g>
+            <path d="M171 259c6-3 14-3 19 0M213 258c6-3 14-3 19 1" stroke="#7a3a1c" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M201 280c-3 11-5 17 2 19" stroke="#c9906c" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M184 314c9 9 26 9 34 0" stroke="#b5343a" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <ellipse cx="166" cy="300" rx="11" ry="6" fill="#e8907e" opacity=".4"/><ellipse cx="236" cy="298" rx="11" ry="6" fill="#e8907e" opacity=".4"/>
+            <g transform="rotate(8 270 440)">
+              <rect x="246" y="300" width="22" height="120" rx="11" fill="#c27a36"/><rect x="270" y="286" width="22" height="130" rx="11" fill="#b06a2a"/><rect x="294" y="306" width="22" height="110" rx="11" fill="#cf8a45"/>
+              <g fill="#f0c98a" opacity=".85"><ellipse cx="257" cy="320" rx="3" ry="12"/><ellipse cx="281" cy="306" rx="3" ry="12"/><ellipse cx="305" cy="326" rx="3" ry="12"/></g>
+              <path d="M226 372h112l-10 128H236z" fill="#c9a679"/><path d="M226 372h112l-4 18H230z" fill="#b8925f"/>
+              <circle cx="282" cy="440" r="18" fill="none" stroke="#24365e" stroke-width="3"/><text x="282" y="446" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="700" font-size="17" fill="#24365e">FC</text>
+            </g>
+            <path d="M200 430c30-6 54-2 74 8" stroke="#f0c7a6" stroke-width="26" fill="none" stroke-linecap="round"/>
+            <g class="vapeur" stroke="#f3ead9" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"><path d="M262 278c-10-14 10-22 0-38"/><path d="M296 270c-10-14 10-22 0-38"/></g>
+          </g>
+        </svg>
+      </div><span class="role">Au comptoir · de 7 h à 20 h</span><h3>Sophie</h3><p>Elle connaît la baguette préférée de chaque habitué, prend les commandes de gâteaux et vous glisse le pain encore tiède dans le sac.</p></div>
     </div>
-    <p class="note">Prénoms et photos seront ajoutés avec l'accord de chacun.</p>
+    <p class="note">Personnages et prénoms imaginés pour illustrer le site.</p>
   </div>
 </section>
 
